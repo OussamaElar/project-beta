@@ -8,18 +8,19 @@ const keys = require('../../config/keys')
 // router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
 router.post('/register', (req, res) => {
-      const { errors, isValid } = validateRegisterInput(req.body)
+      // const { errors, isValid } = validateRegisterInput(req.body)
 
-      if (!isValid) {
-            return res.status(400).json(errors)
-      }
+      // if (!isValid) {
+      //       return res.status(400).json(errors)
+      // }
       // look for existing emails
       User.findOne({ email: req.body.email })
             .then(user => {
                   if (user) {
                         // throw 400 error if the email exists
-                        errors.handle = 'User already exist'
-                        return res.status(400).json(errors)
+                        // errors.handle = 'User already exist'
+                        // return res.status(400).json(errors)
+                        return res.status(400).json({err: 'User already exists'})
                   } else {
                         const newUser = new User({
                               handle: req.body.handle,
@@ -51,11 +52,11 @@ router.post('/register', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-      const { errors, isValid } = validateRegisterInput(req.body)
+      // const { errors, isValid } = validateRegisterInput(req.body)
       
-      if (!isValid) {
-            return res.status(400).json(errors);
-      }
+      // if (!isValid) {
+      //       return res.status(400).json(errors);
+      // }
 
       const email = req.body.email;
       const password = req.body.password;
@@ -80,7 +81,9 @@ router.post('/login', (req, res) => {
                                           }
                                     )
                               } else {
-                                    return res.status(400).json({password: 'Incorrect Password'})
+                                    // errors.password = 'Incorrect Password'
+                                    // return res.status(400).json(errors)
+                                    return res.status(400).json({err: 'Incorrect Password'})
                               }
                         })
             })
