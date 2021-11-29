@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import Root from './components/root';
 import configureStore from './store/store';
 import jwt_decode from 'jwt-decode';
@@ -10,6 +9,7 @@ import { logout } from './actions/session_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  let store;
   if (localStorage.jwtToken) {
     setAuthToken(localStorage.jwtToken);
     const decodedUser = jwt_decode(localStorage.jwtToken);
@@ -21,10 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = '/login';
     }
   } else {
-    store = configureStore({})
-    const root = document.getElementById('root')
-    ReactDOM.render(<Root store={store} />, root)
+     store = configureStore({})
   }
+  const root = document.getElementById('root')
+  ReactDOM.render(<Root store={store} />, root)
+  
 })
 
 
