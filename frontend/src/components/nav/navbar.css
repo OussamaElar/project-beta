@@ -1,3 +1,53 @@
 .logout {
       margin: 8px;
 }
+
+li {
+      list-style: none;
+      text-decoration-style: none;
+}
+
+.nav-bar {
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      background-color: rgb(36, 34, 34);
+      border: 1px solid;
+      border-radius: 5px;
+}
+
+.nav-bar-l {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+}
+.nav-bar-r {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      
+}
+
+.navbar-menu-item {
+      color: white;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+a {
+      text-decoration: none;
+      color:inherit;
+}
+
+.navsupin{
+      color: white;
+      font-size: 20px;
+}
+

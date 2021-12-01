@@ -1,0 +1,54 @@
+.signup-form{
+      height: 500px;
+      width: 50%;
+      margin: auto;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid;
+      border-radius: 8px;
+      border-color: white;
+      background-color: white;
+}
+
+.entry-section{
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+}
+
+#inp {
+      max-height: 80px;
+}
+
+
+.button-section{
+      display: flex;
+      gap: 20px;
+}
+
+.signup-logo {
+      height: 40px;
+      width: 40px;
+}
+
+.submit-button {
+      border: 1x solid;
+      background-color: white;
+      border-radius: 3px;
+}
+
+.entry-section > label {
+      font-weight: 500;
+}
+
+.button-section > button {
+      font-weight: 500;
+}
+
+.errors {
+      color: red;
+}
