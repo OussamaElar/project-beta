@@ -38,7 +38,8 @@
 .submit-button {
       border: 1x solid;
       background-color: white;
-      border-radius: 3px;
+      border-radius: 8px;
+      width: 120px;
 }
 
 .entry-section > label {
@@ -51,4 +52,14 @@
 
 .errors {
       color: red;
+}
+
+h6 > span {
+      font-size: small;
+      color: rgb(109, 190, 241)
+}
+
+.form-footer{
+      margin-top: 40px;
+      margin-left: 0;
 }

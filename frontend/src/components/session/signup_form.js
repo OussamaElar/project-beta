@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './signup.css';
 import logo from '../../assets/test1.png'
 
@@ -117,7 +117,9 @@ class SignupForm extends React.Component {
           </div>
           <div className='button-section'>
             <button className='submit-button btn btn-outline-dark'>Register</button>
-            <button className='create-button btn btn-outline-dark'>Login</button>
+          </div>
+          <div className='form-footer'>
+            <h6>Already have an account? <span><Link to='./login'>Login</Link></span></h6>
           </div>
         </form>
       </div>       
