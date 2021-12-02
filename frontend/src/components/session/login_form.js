@@ -95,7 +95,7 @@ class LoginForm extends React.Component {
           </div>
           <div className='entry-section'>
             <label htmlFor='pass1'>Password</label>
-            <input id='pass1' type='password' size='40' onChange={this.update('password')} value={this.state.password}></input>
+            <input id='pass1' type='password' size='40' onChange={this.update('password')} value={this.state.password} placeholder="Password"></input>
           </div>
           <div className='button-section'>
             <button className='submit-button btn btn-outline-dark'>Login</button>

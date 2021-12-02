@@ -101,7 +101,7 @@ class SignupForm extends React.Component {
           {this.renderErrors()}
           <div className='entry-section'>
             <label htmlFor='name'>Name</label>
-            <input id='name' type='text' size='40' onChange={this.update('handle')} value={this.state.handle}></input>
+            <input id='name' type='text' size='40' onChange={this.update('handle')} value={this.state.handle} placeholder="Name"></input>
           </div>
           <div className='entry-section'>
             <label htmlFor='email'>Email</label>
@@ -109,11 +109,11 @@ class SignupForm extends React.Component {
           </div>
           <div className='entry-section'>
             <label htmlFor='pass1'>Password</label>
-            <input id='pass1' type='password' size='40' onChange={this.update('password')} value={this.state.password}></input>
+            <input id='pass1' type='password' size='40' onChange={this.update('password')} value={this.state.password} placeholder="Password"></input>
           </div>
           <div className='entry-section'>
             <label htmlFor='pass2'>Repeat Password</label>
-            <input id='pass2' type='password' size='40' onChange={this.update('password2')} value={this.state.password2}></input>
+            <input id='pass2' type='password' size='40' onChange={this.update('password2')} value={this.state.password2} placeholder="Repeat Password"></input>
           </div>
           <div className='button-section'>
             <button className='submit-button btn btn-outline-dark'>Register</button>
