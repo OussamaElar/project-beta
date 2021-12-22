@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const { json } = require("body-parser");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 
@@ -81,9 +82,11 @@ router.post('/login', (req, res) => {
                                           // tell the key to expire in 1h
                                           { expiresIn: 3600 },
                                           (err, token) => {
-                                                res.json({success: true, token: 'Bearer' + token})
+                                                res.json({ success: true, token: 'Bearer' + token, 'id': user.id})
                                           }
+                                          
                                     )
+                                    
                               } else {
                                     errors.password = 'Incorrect Password'
                                     return res.status(400).json(errors)

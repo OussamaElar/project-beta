@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 const users = require("./routes/api/users");
+const product = require('./routes/api/products')
 const bodyParser = require('body-parser');
 
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 // database connection 
 const db = require('./config/keys').mongoURI;
 
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
@@ -24,4 +26,5 @@ mongoose
  
 // Routes 
 app.use("/api/users", users);
+app.use("/api/products", product);
 

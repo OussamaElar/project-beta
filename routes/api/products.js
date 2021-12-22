@@ -32,16 +32,45 @@ router.post('/', (req, res) => {
       
       
       product.save()
-            .then(res => {
+            .then(product => (
                   res.status(200).send({
-                        _id: res._id,
-                        title: res.title,
-                        description: res.description,
-                        price: res.price,
-                        user: res.user,
-                        date: res.date
+                        _id: product._id,
+                        title: product.title,
+                        description: product.description,
+                        price: product.price,
+                        user: product.user,
+                        date: product.date
                   })
-            }).catch( err => { 
+                  
+            )).catch( err => { 
                   res.json(err)
             })
 })
+
+router.patch('/:id', (req, res) => {
+      Product.findOne({ _id: req.body.id }, (err, product) => {
+            if (err) {
+                  return res.status(400).json(err)
+            } else {
+                  product.updateOne({
+                        title: req.body.title,
+                        description: req.body.description,
+                        price: req.body.price,
+                        date: req.body.date
+                  }, (err) => {
+                        if (err) {
+                              return res.status(400).json(err)
+                        } else {
+                              return res.json({
+                                    title: product.title,
+                                    description: product.description,
+                                    price: product.price,
+                                    date: req.body.date
+                              })
+                        }
+                  })
+            }
+      })
+})
+
+module.exports = router;
