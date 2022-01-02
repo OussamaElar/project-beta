@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import './navbar.css';
 import logo from '../../assets/test1.png'
-import login_form from '../session/login_form';
+
 
 
 class NavBar extends React.Component {
@@ -41,7 +41,7 @@ class NavBar extends React.Component {
 
                   <nav className='nav-bar'>
                         <ul className='nav-bar-l'>
-                              <li><img src={logo} height='40' width='40'/><span className='navbar-menu-item'> ElarMar</span></li>
+                              <li><img src={logo} height='40' width='40' alt='/'/><span className='navbar-menu-item'> ElarMar</span></li>
                               <li className='navbar-menu-item'><Link to='/'>Home</Link></li>
                               <li className='navbar-menu-item'>Services</li>
                               <li className='navbar-menu-item'>About Us</li>
@@ -49,8 +49,8 @@ class NavBar extends React.Component {
                               {this.props.loggedIn ? 
                               <button onClick={this.logoutUser} className='btn btn-danger navbar-right logout'>Logout</button> :
                               <ul className='nav-bar-r'>
-                                    <li className='navbar-menu-item'><i class="fa fa-sign-in navsupin" aria-hidden="true"></i> <Link to='/login'>Sign In</Link></li>
-                                    <li className='navbar-menu-item'><i class="fa fa-user-plus navsupin" aria-hidden="true"></i> <Link to='/signup'>Sign Up</Link></li>
+                                    <li className='navbar-menu-item'><i className="fa fa-sign-in navsupin" aria-hidden="true"></i> <Link to='/login'>Sign In</Link></li>
+                                    <li className='navbar-menu-item'><i className="fa fa-user-plus navsupin" aria-hidden="true"></i> <Link to='/signup'>Sign Up</Link></li>
                               </ul>
                               }
                   </nav>

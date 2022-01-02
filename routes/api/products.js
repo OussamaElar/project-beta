@@ -9,7 +9,7 @@ const validateProductCreate = require('../../validation/product');
 
 router.get('/', (req, res) => {
       Product.find()
-            .sort(-1)
+            .sort({date: -1})
             .then((products) => res.json(products))
             .catch((err) => res.status(404).json({ "error": 'No Product found' }));
 })
