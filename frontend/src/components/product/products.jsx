@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { withRouter } from 'react-router-dom';
 import './product.css';
 
 
 const Products = (props) => {
       const { fetchProducts, products } = props;
-      let [data] = useState(products)
       
       // const fetchData = () => {
       //      return setProducts(props.products)
@@ -13,7 +12,7 @@ const Products = (props) => {
       
       useEffect(() => {   
             fetchProducts();
-      }, [])
+      }, [fetchProducts])
       
       return (
             <div>
