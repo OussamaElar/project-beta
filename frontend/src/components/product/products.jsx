@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { withRouter } from 'react-router-dom';
+import ProductListItems from './products_list_items'
 import './product.css';
 
 
@@ -18,7 +19,7 @@ const Products = (props) => {
             <div>
                   
                   {products.map((product, i) => (
-                        <p key={i}>{product.title}</p>
+                        <ProductListItems product={product} key={i}/>
                   ))}
             </div>
       )
