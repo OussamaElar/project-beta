@@ -7,8 +7,23 @@ const keys = require('../../config/keys')
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const { json } = require("body-parser");
+const { findById } = require("../../models/User");
 
 // router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+
+router.get('/', (req, res) => {
+      User.find()
+            .sort({ date: -1 })
+            .then((users) => res.json(users)).catch(err => res.status(404).json({ usersn: 'No users found'}))
+})
+
+router.get('/:id', (req, res) => {
+      User.findById(req.params.id)
+            .then((user => {
+                  res.json(user)
+            }))
+            .catch(err => res.status(404).json({ usern: 'User not found'}))
+})
 
 router.post('/register', (req, res) => {
       const { errors, isValid } = validateRegisterInput(req.body)

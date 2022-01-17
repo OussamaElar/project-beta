@@ -7,12 +7,12 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import ProductContainer from './product/product_container';
-import history from './history'
+
 
 const App = () => (
       <div>
             <NavBarContainer />
-            <Switch history={history}>
+            <Switch>
                   <Route exact path='/' component={MainPage} />
                   <Route exact path='/products' component={props => <ProductContainer {...props}/>} />
                   <AuthRoute exact path='/login' component={LoginFormContainer} />
