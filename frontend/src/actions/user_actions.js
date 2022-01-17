@@ -18,17 +18,17 @@ export const receiveUsers = (users) => {
       })
 };
 
-export const fetchUsers = () => dispatch => {
-      return APIUtil.getUsers()
-            .then((users => dispatch(receiveUsers(users))));
-};
+export const fetchUsers = () => dispatch => (
+      APIUtil.getUsers()
+            .then(users => dispatch(receiveUsers(users)))
+);
 
-export const fetchUser = (userId) => dispatch => {
-      return APIUtil.getUser(userId)
-            .then(user => dispatch(receiveUser(user)));
-};
+export const fetchUser = (userId) => dispatch => (
+      APIUtil.getUser(userId)
+            .then(user => dispatch(receiveUser(user)))
+);
 
-export const updateUser = (user) => dispatch => {
-      return APIUtil.editUser(user)
-            .then(user => dispatch(receiveUser(user)));
-};
+export const updateUser = (user) => dispatch => (
+      APIUtil.editUser(user)
+            .then(user => dispatch(receiveUser(user)))
+);
