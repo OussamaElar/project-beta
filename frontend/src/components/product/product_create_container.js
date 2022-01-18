@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { createProduct } from "../../actions/product_action";
 import { fetchUser } from "../../actions/user_actions"; 
-import ProductCreate from './product_create';
+import ProductCreate from './product_form';
 
 const mSTP = (state, ownProps) => {
       return ({
