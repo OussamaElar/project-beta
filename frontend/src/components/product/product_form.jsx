@@ -4,6 +4,7 @@ import './produc_create.css';
 
 const ProductCreate = (props) => {
       const [values, setValues] = useState(props.product);
+      const [error, setError] = useState(null);
       const handleChange = (field) => {
             return e => {
                   e.persist();
@@ -13,19 +14,41 @@ const ProductCreate = (props) => {
                   }))
             }
       }
+      const handleErrors = () => {
+            setError(<p className="errors">Something went wrong, please make sure to fill all fields!</p>)
+            return error    
+      }
+      const handleSubmit = (e) => {
+            e.preventDefault();
+            if (props.formType === 'Create Product') {
+                  let product = new FormData();
+                  let dateObj = new Date();
+                  let month = dateObj.getUTCMonth() + 1; 
+                  let day = dateObj.getUTCDate();
+                  let year = dateObj.getUTCFullYear();
+                  let newdate = year + "/" + month + "/" + day;
+                  product.append('title', values.title)
+                  product.append('description', values.description)
+                  product.append('price', values.price)
+                  product.append('date', newdate)
+                  props.submitProduct(product).then(() => props.history.push('./products', err => {
+                        handleErrors()
+                  }))
+            }
+      }
       return (
-            <form className='create_form'>
-                  <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Title</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value={values.title}/>
+            <form className='create_form' onSubmit={handleSubmit}>
+                  <div className="mb-3">
+                        <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Title" value={values.title} onChange={handleChange('title')}/>
                   </div>
-                  <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value={values.description}></textarea>
+                  <div className="mb-3">
+                        <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={values.description} onChange={handleChange('description')}></textarea>
                   </div>
-                  <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Price</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput2" placeholder="Price" value={ values.price }/>
+                  <div className="mb-3">
+                        <label htmlFor="exampleFormControlInput1" className="form-label">Price</label>
+                        <input type="number" className="form-control" id="exampleFormControlInput2" placeholder="Price" value={ values.price } onChange={handleChange('price')}/>
                   </div>
                   <button type="submit" className="btn btn-warning">Submit</button>                  
             </form>

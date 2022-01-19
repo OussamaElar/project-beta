@@ -12,6 +12,7 @@ const mSTP = (state, ownProps) => {
                   description: '',
                   price: '',
                   user: '',
+                  date: ''
             },
             formType: 'Create Product'
       })
