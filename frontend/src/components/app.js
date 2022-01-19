@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Route, Switch } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 
@@ -18,7 +18,7 @@ const App = () => (
                   <Route exact path='/products' component={props => <ProductContainer {...props}/>} />
                   <AuthRoute exact path='/login' component={LoginFormContainer} />
                   <AuthRoute exact path='/signup' component={SignupFormContainer} />
-                  <AuthRoute exact path='/newproduct' component={ ProductCreateContainer }/>
+                  <ProtectedRoute exact path='/newproduct' component={props => <ProductCreateContainer {...props}/> }/>
             </Switch>
       </div>
 )

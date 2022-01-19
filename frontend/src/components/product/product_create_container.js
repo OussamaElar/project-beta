@@ -6,7 +6,7 @@ import ProductCreate from './product_form';
 const mSTP = (state, ownProps) => {
       return ({
             loggedIn: state.session.isAuthenticated,
-            userId: state.session.user.userId,
+            userId: state.session.user.id,
             product: {
                   title: '',
                   description: '',

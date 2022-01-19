@@ -21,23 +21,28 @@ const ProductCreate = (props) => {
       const handleSubmit = (e) => {
             e.preventDefault();
             if (props.formType === 'Create Product') {
-                  let product = new FormData();
                   let dateObj = new Date();
                   let month = dateObj.getUTCMonth() + 1; 
                   let day = dateObj.getUTCDate();
                   let year = dateObj.getUTCFullYear();
                   let newdate = year + "/" + month + "/" + day;
-                  product.append('title', values.title)
-                  product.append('description', values.description)
-                  product.append('price', values.price)
-                  product.append('date', newdate)
+                  let product = {
+                        title: values.title,
+                        description: values.description,
+                        price: values.price,
+                        date: newdate,
+                        user: props.userId
+                  }
+                  
+                  debugger
                   props.submitProduct(product).then(() => props.history.push('./products', err => {
                         handleErrors()
                   }))
             }
+            debugger
       }
       return (
-            <form className='create_form' onSubmit={handleSubmit}>
+            <form className='create_form' onSubmit={handleSubmit} encType="multipart/form-data">
                   <div className="mb-3">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Title" value={values.title} onChange={handleChange('title')}/>
