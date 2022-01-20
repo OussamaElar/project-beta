@@ -38,8 +38,25 @@ const ProductCreate = (props) => {
                   props.submitProduct(product).then(() => props.history.push('./products', err => {
                         handleErrors()
                   }))
+            } else {
+                  let dateObj = new Date();
+                  let month = dateObj.getUTCMonth() + 1; 
+                  let day = dateObj.getUTCDate();
+                  let year = dateObj.getUTCFullYear();
+                  let newdate = year + "/" + month + "/" + day;
+                  let existingProduct = {
+                        id: props._id,
+                        title: values.title,
+                        description: values.description,
+                        price: values.price,
+                        date: newdate,
+                        user: props.userId
+                  } 
+                  props.submitProduct(existingProduct).then(() => props.history.push('./products', err => {
+                        handleErrors()
+                  }))
             }
-            debugger
+            
       }
       return (
             <form className='create_form' onSubmit={handleSubmit} encType="multipart/form-data">

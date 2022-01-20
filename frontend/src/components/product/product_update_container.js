@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { updateProduct, fetchProduct } from '../../actions/product_action';
@@ -7,10 +7,11 @@ import ProductCreate from './product_form';
 
 const EditProduct = (props) => {
       useEffect(() => {
-            
+            props.fetchProduct(props.match.params.productId)
       }, [])
+      if (!props.product) return null
       return (
-            
+            <ProductCreate {...props}/>
       )
 }
 
