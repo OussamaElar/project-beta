@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import { updateProduct, fetchProduct } from '../../actions/product_action';
 import ProductCreate from './product_form';
 
-
+// finish first the product show and add button for update product
 const EditProduct = (props) => {
       useEffect(() => {
             props.fetchProduct(props.match.params.productId)
