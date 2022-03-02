@@ -4,11 +4,12 @@ import React, { useState, useEffect } from 'react';
 
 const ProductShow = (props) => {
       const { product } = props;
-      const { data, setData } = useState()
+      
       useEffect(() => {
-            props.fetchProduct(props.match.params.productId).then(res => setData(res.data))
+            props.fetchProduct(props.match.params.productId);
+           
       }, [])
-
+      if (!product) return null
       return (
             <div>
                   <div>
