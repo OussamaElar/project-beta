@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './product_show.css'
 
 
 
@@ -11,16 +12,16 @@ const ProductShow = (props) => {
       }, [])
       if (!product) return null
       return (
-            <div>
-                  <div>
-                        <img></img>
+            <div className='product_show'>
+                  <div className='image_div'>
+                        <img src=''></img>
                   </div>
-                  <div>
+                  <div className='product_info'>
                         <h1>{ product.title }</h1>
                         <p>{ product.description }</p>
                   </div>
-                  <div>
-                        <h4>{ product.price }</h4>
+                  <div className='product_show_actions'>
+                        <h4>Price: { product.price }.00$</h4>
                         <button>Add to Cart</button>
                         <button>Buy Now</button>
                   </div>

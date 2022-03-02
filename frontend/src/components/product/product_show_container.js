@@ -8,7 +8,7 @@ import ProductShow from './product_show';
 const mSTP = (state, ownProps) => {
       return {
             product: Object.values(state.products.all)[0],
-            userId: state.session.user.id
+            // userId: state.session.user.id
       }
 }
 

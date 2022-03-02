@@ -1,0 +1,38 @@
+.product_show {
+      width: 95%;
+      margin: auto;
+      margin-top: 20px;
+      background-color: white;
+      border: 1px solid white;
+      border-radius: 8px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 35% 40% 20%;
+      gap: 20px;
+}
+
+.product_info {
+      background-color: lightgray;
+      padding: 20px;
+      border: 1px solid white;
+      border-radius: 8px;
+}
+
+.product_show_actions {
+      background-color: lightgray;
+      padding: 20px;
+      border: 1px solid white;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+}
+
+.product_show_actions> button {
+      border: 1px solid rgb(249, 249, 4);
+      border-radius: 10px;
+      background-color: rgb(249, 249, 4);
+      cursor: pointer;
+}
+
+
