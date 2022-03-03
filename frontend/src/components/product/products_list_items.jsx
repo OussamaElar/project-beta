@@ -8,12 +8,12 @@ const ProductListItems = (props) => {
       return (
             
                   <div className="card">
-                        <Link to={`/products/${product._id}`}><img className="card-img" src="..." alt="Card image cap"/></Link>
+                        <div className="card-img">
+                              <Link to={`/products/${product._id}`}><img  src="..." alt="Card image cap"/></Link>
+                        </div>
                         <div className="card-body">
-                              <h5 className="card-title">{product.title}</h5>
-                              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                              <button className="btn">Go somewhere</button>
-                              
+                              <h4 className="card-title">{product.title}</h4>
+                              <h5>{ product.price}.00$</h5>
                         </div>
                   </div>
             

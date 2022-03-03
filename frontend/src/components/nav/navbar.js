@@ -41,8 +41,8 @@ class NavBar extends React.Component {
 
                   <nav className='nav-bar'>
                         <ul className='nav-bar-l'>
-                              <li><img src={logo} height='40' width='40' alt='/'/><span className='navbar-menu-item'> ElarMar</span></li>
-                              <li className='navbar-menu-item'><Link to='/'>Home</Link></li>
+                              <li className='logo'><Link to='/'><img src={logo} height='20' width='20' alt='/'/></Link><span className='navbar-menu-item'>ElarMar</span></li>
+                              <li className='navbar-menu-item'><Link to='/products'>Products</Link></li>
                               <li className='navbar-menu-item'>Services</li>
                               <li className='navbar-menu-item'>About Us</li>
                         </ul>

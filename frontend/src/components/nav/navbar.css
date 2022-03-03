@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Oswald:wght@200;300;400;500;600;700&display=swap');
 
 li {
       list-style: none;
@@ -46,5 +47,16 @@ a {
 .navsupin{
       color: white;
       font-size: 20px;
+}
+
+.logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 40px;
+}
+
+.logo> span {
+      font-family: 'Dancing Script', cursive;
 }
 
