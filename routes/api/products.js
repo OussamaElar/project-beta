@@ -2,6 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Aws = require('aws-sdk');
+const multer = require('multer');
+const multerS3 = require('multer-s3');;
+require('dotenv').config();
 
 
 const Product = require('../../models/Product');
@@ -25,6 +29,60 @@ router.delete('/:id', (req, res) => {
             .then((product) => res.json(product))
             .catch((err) => res.status(404).json({'error': 'No product found'}))
 })
+
+
+router.patch('/:id', (req, res) => {
+      Product.findOne({ _id: req.body.id }, (err, product) => {
+            if (err) {
+                  return res.status(400).json(err)
+            } else {
+                  product.updateOne({
+                        title: req.body.title,
+                        description: req.body.description,
+                        price: req.body.price,
+                        date: req.body.date
+                  }, (err) => {
+                        if (err) {
+                              return res.status(400).json(err)
+                        } else {
+                              return res.json({
+                                    title: product.title,
+                                    description: product.description,
+                                    price: product.price,
+                                    date: req.body.date
+                              })
+                        }
+                  })
+            }
+      })
+})
+
+const storage = multer.memoryStorage({
+      destination: function (req, file, cb) {
+            cb(null, '')
+      }
+})
+
+const fileFilter = (req, file, cb) => {
+      const allowedTypes = [
+            'image/jpeg',
+            'image/pjpeg',
+            'image/png',
+            'image/gif',
+      ]
+      if (allowedTypes.includes(file.mimetype)) {
+            cb(null, true)
+      } else {
+            cb(null, false)
+      }
+}
+
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+const s3 = new Aws.S3({
+      accessKey: '',
+      secretAccessKey: ''
+}) 
 
 router.post('/', (req, res) => {
 
@@ -53,30 +111,5 @@ router.post('/', (req, res) => {
             })
 })
 
-router.patch('/:id', (req, res) => {
-      Product.findOne({ _id: req.body.id }, (err, product) => {
-            if (err) {
-                  return res.status(400).json(err)
-            } else {
-                  product.updateOne({
-                        title: req.body.title,
-                        description: req.body.description,
-                        price: req.body.price,
-                        date: req.body.date
-                  }, (err) => {
-                        if (err) {
-                              return res.status(400).json(err)
-                        } else {
-                              return res.json({
-                                    title: product.title,
-                                    description: product.description,
-                                    price: product.price,
-                                    date: req.body.date
-                              })
-                        }
-                  })
-            }
-      })
-})
 
 module.exports = router;
