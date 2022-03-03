@@ -16,7 +16,7 @@ const Products = (props) => {
       }, [fetchProducts])
       
       return (
-            <div>
+            <div className="container">
                   
                   {products.map((product, i) => (
                         <ProductListItems product={product} key={i}/>

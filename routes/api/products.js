@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
       Product.findOne({ _id: req.params.id })
             .then((product) => res.json(product))
-            .then((err) => res.status(404).json({ 'error': 'Product not found' }))
+            .catch((err) => res.status(402).json({ 'error': 'Product not found' }))
 })
 
 router.delete('/:id', (req, res) => {
