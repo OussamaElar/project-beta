@@ -29,10 +29,24 @@
 }
 
 .product_show_actions> button {
-      border: 1px solid rgb(249, 249, 4);
+      border: 1px solid rgb(36, 34, 34);
       border-radius: 10px;
-      background-color: rgb(249, 249, 4);
+      background-color: rgb(36, 34, 34);
       cursor: pointer;
+      color: white;
+      font-size: larger;
+      font-weight: bold;
+      padding: 5px;
+}
+
+.image_div {
+      height: 100%;
+      width: 90%;
+}
+
+.image_div> img {
+      height: 100%;
+      width: 100%;
 }
 
 

@@ -24,6 +24,13 @@ router.get('/:id', (req, res) => {
             .catch((err) => res.status(402).json({ 'error': 'Product not found' }))
 })
 
+router.get('/user/:userId', (req, res) => {
+      Product.find({ user: req.params.userId })
+            .sort({date: -1})
+            .then(products => res.json(products))
+            .catch(err => res.status(404).json({'error': 'No product found'}))
+})
+
 router.delete('/:id', (req, res) => {
       Product.findOne({ _id: req.params.id })
             .then((product) => res.json(product))
@@ -80,35 +87,56 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 const s3 = new Aws.S3({
-      accessKey: '',
-      secretAccessKey: ''
+      
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 }) 
 
-router.post('/', (req, res) => {
 
-      const product = new Product({
-            title: req.body.title,
-            description: req.body.description,
-            price: req.body.price,
-            user: req.body.user,
-            date: req.body.date
+router.post('/', upload.single('productImage'), (req, res) => {
+      if (!req.file) return res.send('Please upload a file')
+      console.log(req.file)
+      const params = {
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: req.body.title,
+            Body: req.file.buffer,
+            ACL: "public-read-write",
+            ContentType: "image/jpeg"
+      }
+      
+
+      s3.upload(params, (error, data) => {
+      
+            if (error) {
+                  res.status(500).json(error)
+            }
+            const product = new Product({
+                  title: req.body.title,
+                  description: req.body.description,
+                  price: req.body.price,
+                  productImage: data.Location,
+                  user: req.body.user,
+                  date: req.body.date
+            });
+            
+            
+            product.save()
+                  .then(product => (
+                        res.status(200).send({
+                              _id: product._id,
+                              title: product.title,
+                              description: product.description,
+                              price: product.price,
+                              user: product.user,
+                              date: product.date,
+                              productImage: data.Location,
+                        })
+                        
+                  )).catch(err => {
+                        res.json(err)
+                  })
       })
       
-      
-      product.save()
-            .then(product => (
-                  res.status(200).send({
-                        _id: product._id,
-                        title: product.title,
-                        description: product.description,
-                        price: product.price,
-                        user: product.user,
-                        date: product.date
-                  })
-                  
-            )).catch( err => { 
-                  res.json(err)
-            })
 })
 
 

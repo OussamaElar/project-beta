@@ -24,7 +24,7 @@ export const removeProduct = productId => ({
 })
 
 
-export const recieveUserProduct = products => ({
+export const recieveUserProducts = products => ({
       type: RECEIVE_USER_PRODUCTS,
       products
 })
@@ -57,5 +57,11 @@ export const createProduct = (productData) => dispatch => (
 export const updateProduct = productData => dispatch => (
       APIUtil.updateProduct(productData).then((product) => (
             dispatch(recieveProduct(product))
+      ))
+)
+
+export const getUserProducts = (userId) => dispatch => (
+      APIUtil.getUserProduct(userId).then((products) => (
+            dispatch((recieveUserProducts(products)))
       ))
 )

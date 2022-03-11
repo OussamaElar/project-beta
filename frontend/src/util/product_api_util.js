@@ -11,6 +11,7 @@ export const fetchProducts = () => {
 }
 
 export const createProduct = (productData) => {
+      debugger
       return axios.post('api/products', productData);
 }
 

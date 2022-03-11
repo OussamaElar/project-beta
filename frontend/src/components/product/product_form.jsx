@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
-import './produc_create.css';
+import './product_create.css';
 
 
 const ProductCreate = (props) => {
       const [values, setValues] = useState(props.product);
+      const [productImage, setProductImage] = useState(null);
+      const [file, setFile] = useState(null);
       const [error, setError] = useState(null);
+
+      const handleImage = (e) => {
+            if (e.target.files[0]) {
+                  console.log({ "pic": e.target.files })
+                  setProductImage(e.target.files[0])
+                  const reader = new FileReader();
+                  reader.addEventListener('load', () => {
+                        setFile(reader.result);
+                  });
+                  reader.readAsDataURL(e.target.files[0])
+            }
+      }
       const handleChange = (field) => {
             return e => {
                   e.persist();
@@ -26,13 +40,25 @@ const ProductCreate = (props) => {
                   let day = dateObj.getUTCDate();
                   let year = dateObj.getUTCFullYear();
                   let newdate = year + "/" + month + "/" + day;
-                  let product = {
-                        title: values.title,
-                        description: values.description,
-                        price: values.price,
-                        date: newdate,
-                        user: props.userId
+
+                  let product = new FormData();
+                  product.append('title', values.title)
+                  product.append('description', values.description)
+                  product.append('price', values.price)
+                  product.append('date', newdate)
+                  if (productImage) {     
+                        product.append('productImage', productImage)
                   }
+                  product.append('user', props.userId)
+
+                  // let product = {
+                  //       title: values.title,
+                  //       description: values.description,
+                  //       price: values.price,
+                  //       date: newdate,
+                  //       productImage: productImage,
+                  //       user: props.userId
+                  // }
                   
                   debugger
                   props.submitProduct(product).then(() => props.history.push('./products', err => {
@@ -60,19 +86,25 @@ const ProductCreate = (props) => {
       }
       return (
             <form className='create_form' onSubmit={handleSubmit} encType="multipart/form-data">
-                  <div className="mb-3">
+                  <div className="form-detail">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Title</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Title" value={values.title} onChange={handleChange('title')}/>
                   </div>
-                  <div className="mb-3">
+                  <div className="form-detail">
                         <label htmlFor="exampleFormControlTextarea1" className="form-label">Description</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={values.description} onChange={handleChange('description')}></textarea>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={values.description} onChange={handleChange('description')} placeholder='Description'></textarea>
                   </div>
-                  <div className="mb-3">
+                  <div className="form-detail">
+                        <label htmlFor="exampleFormControlInput1" className="form-label">Image</label>
+                        <img className='image-prev' src={file}></img>
+                        <input type="file" name="productImage" onChange={handleImage} multiple={false} />
+                        <p>.jpeg, .png, .gif Max 100mb. </p>
+                  </div>
+                  <div className="form-detail">
                         <label htmlFor="exampleFormControlInput1" className="form-label">Price</label>
                         <input type="number" className="form-control" id="exampleFormControlInput2" placeholder="Price" value={ values.price } onChange={handleChange('price')}/>
                   </div>
-                  <button type="submit" className="btn btn-warning">Submit</button>                  
+                  <button type="submit" className="form-submit">Submit</button>                  
             </form>
       )
 }

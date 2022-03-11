@@ -16,6 +16,15 @@ const UserSchema = new Schema ({
       password: {
             type: String,
             required: true
+      },
+
+      accountType: {
+            type: String,
+            default: 'buyer'
+      },
+
+      userImage: {
+            type: String
       }
 }, {
       timestamps: true 

@@ -14,7 +14,7 @@ const ProductShow = (props) => {
       return (
             <div className='product_show'>
                   <div className='image_div'>
-                        <img src=''></img>
+                        <img src={product.productImage}></img>
                   </div>
                   <div className='product_info'>
                         <h1>{ product.title }</h1>
