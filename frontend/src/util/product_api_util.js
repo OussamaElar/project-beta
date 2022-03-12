@@ -11,7 +11,6 @@ export const fetchProducts = () => {
 }
 
 export const createProduct = (productData) => {
-      debugger
       return axios.post('api/products', productData);
 }
 
@@ -21,7 +20,7 @@ export const updateProduct = (productData) => {
 
 
 export const deleteProduct = (productId) => {
-      return axios.delete(`/api/products/${productId}`,);
+      return axios.delete(`/api/products/${productId}`);
 }
 
 

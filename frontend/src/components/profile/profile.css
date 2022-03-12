@@ -1,3 +1,10 @@
+body {
+      position: relative;
+}
+
+
+
+
 .profile-container{
       display: grid;
       grid-template-columns: 11% 89%;
@@ -47,4 +54,25 @@
 .profile-pic {
       height: 100%;
       width: 100%;
+}
+
+.card-button {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 5px;
+}
+
+.card-button> button{
+      border: none;
+      border-bottom: 1px solid black;
+      font-size: 10px;
+      cursor: pointer;
+      background: none;
+      padding: 0px;
+}
+
+.card-button> button:hover {
+      color: lightgray;
+      border-bottom: 1px solid lightgray;
 }

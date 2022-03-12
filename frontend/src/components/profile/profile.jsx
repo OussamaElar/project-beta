@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'; 
 import { Link } from 'react-router-dom';
-import { fetchUser } from '../../actions/user_actions';
 import ProductListItems from './products_list_items'
 import './profile.css'
 
 
 const Profile = (props) => {
-      const { fetchUserProducts, fetchUser ,products, user } = props;
+      const { fetchUserProducts, fetchUser ,products, user, deleteProduct } = props;
       
       useEffect(() => {
             fetchUserProducts(props.match.params.id);
@@ -28,7 +27,7 @@ const Profile = (props) => {
                   <div className='container'>
                         
                         {products.map((product, i) => (
-                              <ProductListItems product={product} key={i}/>
+                              <ProductListItems product={product} deleteProduct={deleteProduct} key={i}/>
                         ))}
                         
                   </div>

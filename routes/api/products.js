@@ -32,7 +32,7 @@ router.get('/user/:userId', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-      Product.findOne({ _id: req.params.id })
+      Product.deleteOne({ _id: req.params.id })
             .then((product) => res.json(product))
             .catch((err) => res.status(404).json({'error': 'No product found'}))
 })
