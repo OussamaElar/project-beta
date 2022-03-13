@@ -14,7 +14,7 @@ import ProfileContainer from './profile/profile_container';
 
 
 const App = () => (
-      <div>
+      <div className='app' id='app'>
             <NavBarContainer />
             <div className='main-container'>
                   <Switch>

@@ -1,4 +1,4 @@
-body {
+#app {
       position: relative;
       z-index: 1;
 }
@@ -7,17 +7,19 @@ body {
       position: absolute;
       border: 1px solid black;
       border-radius: 20px;
-      z-index: 9999 !important;
+      z-index: 5 !important;
       width: 30%;
       height: 200px;
       background-color: white;
       left: 35%;
+      
+      
 }
 
 .show{
       display: block;
       position: absolute;
-      
+      z-index: 9999;
 }
 
 .hide{
@@ -25,9 +27,8 @@ body {
 }
 
 .is-blurred {
-  filter: blur(2px);
-  -webkit-filter: blur(2px);
-  z-index: 1;
+  opacity: 0.4;
+  z-index: -1;
 }
 
 .profile-container{

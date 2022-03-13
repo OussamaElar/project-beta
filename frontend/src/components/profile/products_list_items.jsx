@@ -8,7 +8,7 @@ const ProductListItems = (props) => {
       const [modalStyle, setModalStyle] = useState('hide');
       
       const handleModal = (e) => {
-            let body = document.querySelector('body');
+            let body = document.getElementById('app');
             if (modalStyle === 'hide') {
                   setModalStyle('show');
                   body.classList.add('is-blurred');
@@ -19,7 +19,7 @@ const ProductListItems = (props) => {
       }
 
       const cancelDelete = (e) => {
-            let body = document.querySelector('body');
+            let body = document.getElementById('app');
             if (modalStyle === 'show') {
                   setModalStyle('hide');
                   body.classList.remove('is-blurred');
