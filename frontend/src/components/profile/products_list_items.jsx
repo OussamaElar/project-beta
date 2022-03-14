@@ -1,4 +1,3 @@
-import { Discovery } from 'aws-sdk';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -44,9 +43,11 @@ const ProductListItems = (props) => {
                         <button><Link to=''>Update Listing</Link></button>
                   </div>
                   <div className={modalStyle + ' modal'}>
-                        <p>Are you sure you want to delete this item</p>
-                        <button  onClick={cancelDelete}>Cancel</button>
-                        <button  onClick={handleDelete}>Confirm</button>
+                        <div className='modal-content'>
+                              <p>Are you sure you want to delete this item</p>
+                              <button  onClick={cancelDelete}>Cancel</button>
+                              <button  onClick={handleDelete}>Confirm</button>
+                        </div>
                   </div>
             </div>
       )
