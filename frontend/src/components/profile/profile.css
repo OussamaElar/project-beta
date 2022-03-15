@@ -18,10 +18,37 @@
       margin: 15% auto; /* 15% from the top and centered */
       padding: 20px;
       border: 1px solid #888;
-      width: 40%; /* Could be more or less, depending on screen size */
+      width: 30%; /* Could be more or less, depending on screen size */
+      padding-left: 50px;
+      padding-right: 50px;
+      align-items: center;
       display: flex;
+      flex-direction: column;
+      border: 1px solid white;
+      border-radius: 20px;
       
       
+}
+
+.modal-content> p {
+      font-size: large;
+      font-weight: 500;
+}
+
+.modal-button {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+}
+
+.modal-button> button {
+      border: 1px solid white;
+      border-radius: 20px;
+      background-color: black;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      width: 40%;
 }
 
 .show{

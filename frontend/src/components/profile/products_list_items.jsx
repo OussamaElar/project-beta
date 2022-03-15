@@ -40,13 +40,15 @@ const ProductListItems = (props) => {
                   </div>
                   <div className='card-button'>
                         <button type='submit' onClick={handleModal}>Delete Listing</button>
-                        <button><Link to=''>Update Listing</Link></button>
+                        <button><Link to={`/updateproduct/${product._id}`}>Update Listing</Link></button>
                   </div>
                   <div className={modalStyle + ' modal'}>
                         <div className='modal-content'>
-                              <p>Are you sure you want to delete this item</p>
-                              <button  onClick={cancelDelete}>Cancel</button>
-                              <button  onClick={handleDelete}>Confirm</button>
+                              <p>Are you sure you want to delete this item?</p>
+                              <div className='modal-button'>
+                                    <button  onClick={cancelDelete}>Cancel</button>
+                                    <button  onClick={handleDelete}>Confirm</button>
+                              </div>
                         </div>
                   </div>
             </div>
