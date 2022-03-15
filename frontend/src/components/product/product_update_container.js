@@ -7,7 +7,7 @@ import ProductCreate from './product_form';
 // finish first the product show and add button for update product
 const EditProduct = (props) => {
       useEffect(() => {
-            props.fetchProduct(props.match.params.productId)
+            props.fetchProduct(props.match.params.id)
       }, [])
       if (!props.product) return null
       return (

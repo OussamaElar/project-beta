@@ -61,7 +61,7 @@ const ProductCreate = (props) => {
                   // }
                   
                   debugger
-                  props.submitProduct(product).then(() => props.history.push('./products', err => {
+                  props.submitProduct(product).then(() => props.history.push('/products', err => {
                         handleErrors()
                   }))
             } else {
@@ -71,14 +71,14 @@ const ProductCreate = (props) => {
                   let year = dateObj.getUTCFullYear();
                   let newdate = year + "/" + month + "/" + day;
                   let existingProduct = {
-                        id: props._id,
+                        id: props.product._id,
                         title: values.title,
                         description: values.description,
                         price: values.price,
                         date: newdate,
-                        user: props.userId
+                        user: props.product.user
                   } 
-                  props.submitProduct(existingProduct).then(() => props.history.push('./products', err => {
+                  props.submitProduct(existingProduct).then(() => props.history.push('/products', err => {
                         handleErrors()
                   }))
             }
