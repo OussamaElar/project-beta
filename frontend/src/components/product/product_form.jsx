@@ -7,6 +7,7 @@ const ProductCreate = (props) => {
       const [productImage, setProductImage] = useState(null);
       const [file, setFile] = useState(null);
       const [error, setError] = useState(null);
+      
 
       const handleImage = (e) => {
             if (e.target.files[0]) {
@@ -60,7 +61,6 @@ const ProductCreate = (props) => {
                   //       user: props.userId
                   // }
                   
-                  debugger
                   props.submitProduct(product).then(() => props.history.push('/products', err => {
                         handleErrors()
                   }))
@@ -70,7 +70,8 @@ const ProductCreate = (props) => {
                   let day = dateObj.getUTCDate();
                   let year = dateObj.getUTCFullYear();
                   let newdate = year + "/" + month + "/" + day;
-                  let existingProduct = {
+                  let existingProduct = {}
+                  existingProduct = {
                         id: props.product._id,
                         title: values.title,
                         description: values.description,
@@ -81,6 +82,7 @@ const ProductCreate = (props) => {
                   props.submitProduct(existingProduct).then(() => props.history.push('/products', err => {
                         handleErrors()
                   }))
+                  existingProduct = {}
             }
             
       }
