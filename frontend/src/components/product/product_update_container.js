@@ -6,6 +6,7 @@ import ProductCreate from './product_form';
 
 // finish first the product show and add button for update product
 // product update has a problem on updateing the actual product 
+// today i haven't done notthing 
 const EditProduct = (props) => {
       useEffect(() => {
             props.fetchProduct(props.match.params.id)
